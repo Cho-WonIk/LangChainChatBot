@@ -2,6 +2,7 @@ pysqlite3-binary
 langchain
 langchain-openai
 langchain-community
+langchain-huggingface
 chromadb
 unstructured
 sentence-transformers
