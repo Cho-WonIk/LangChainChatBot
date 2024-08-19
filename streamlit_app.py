@@ -22,7 +22,7 @@ else:
 def page_one():
 
     with st.container():
-        col1, col2 = st.colums(2)
+        col1, col2 = st.columns(2)
 
         with col1:
             st.write("첫 번째 박스")
