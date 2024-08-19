@@ -4,7 +4,7 @@ import streamlit as st
 # 학생 정보
 Grade = 1               # 학년
 Major = "컴퓨터공학과"   # 학과
-ID = "20001234"         # 학번
+Student_ID = "20001234"         # 학번
 Student_Career = "미정"              # 희망직종
 general_credits = 0     # 교양학점
 major_credits = 0       # 전공학점
@@ -40,8 +40,8 @@ def page_one():
         student_info_col, grade_col = st.columns(2)
 
         with student_info_col:
-            st.text_input("학생 정보")
-            st.text_input("학번", value=ID)
+            st.text("학생 정보")
+            st.text_input("학번", value=Student_ID)
             st.text_input("학과", value = Major)
             st.text_input("학년", value = Grade)
             st.selectbox("희망직종 선택", Career, index=Career.index(Student_Career))
