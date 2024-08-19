@@ -83,7 +83,15 @@ def page_two():
             text = "희망 직종 : " + Student_Career
             st.write(text)
             st.write("이수 조건")
-            st.write("") # db에서 정보를 받아온 내용을 바탕으로 계산
+
+            with st.container():
+                general, major = st.columns(2)
+
+                with general:
+                    st.text("교양 : ")
+                    
+                with major:
+                    st.text("전공 : ")
 
         with result:
             st.text_area("추천 강좌", height=200)
@@ -91,7 +99,7 @@ def page_two():
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
-    page = st.sidebar.radio("", ["정보 입력", "AI 컨설팅"])
+    page = st.sidebar.radio("MENU", ["정보 입력", "AI 컨설팅"])
 
     if page == "정보 입력":
         page_one()
