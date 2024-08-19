@@ -1,5 +1,23 @@
 import streamlit as st
 
+# 사이드바에 토글 버튼 생성
+toggle = st.sidebar.button("토글")
+
+# 세션 상태 관리를 위해 스트림릿의 세션 상태 API 사용
+if 'show' not in st.session_state:
+    st.session_state.show = False
+
+# 버튼이 눌렸을 때 상태 토글
+if toggle:
+    st.session_state.show = not st.session_state.show
+
+# 상태에 따라 정보 표시
+if st.session_state.show:
+    st.write("여기에 보여질 내용을 넣어주세요!")
+else:
+    st.write("버튼을 눌러 내용을 토글하세요.")
+
+
 # 첫 번째 페이지 구성
 def page_one():
     with st.container():
