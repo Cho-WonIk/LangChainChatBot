@@ -49,13 +49,13 @@ def page_one():
                 st.write("")
 
             with col2:
-                col2_1, col2_2 = st.colums(2)
+                col2_1, col2_2 = st.columns(2)
 
                 with col2_1:
                     st.write("")
                 
                 with col2_2:
-                    col2_2_1, col2_2_2 = st.colums(2)
+                    col2_2_1, col2_2_2 = st.columns(2)
 
                     with col2_2_1:
                         st.write("")
