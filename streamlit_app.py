@@ -52,12 +52,28 @@ def page_one():
 
 # 페이지 2: AI 컨설팅
 def page_two():
+    st.subheader("AI 컨설팅")
 
-    st.write("희망 직종 : ", st.session_state.student_info['student_career'])
-    st.write("교양 학점 : ", st.session_state.student_info['general_credits'])
-    st.write("전공 학점 : ", st.session_state.student_info['major_credits'])
-    st.text_area("추천 강좌", height=200)
-    st.text_area("AI의견", height=200)
+    with st.container():
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.write("희망 직종 : ", st.session_state.student_info['student_career'])
+        
+        with col2:
+            st.write("교양 학점 : ", st.session_state.student_info['general_credits'])
+            st.write("전공 학점 : ", st.session_state.student_info['major_credits'])
+
+    with st.container():
+        col2_1, col2_2 = st.columns(2)
+
+        with col2_1:
+            st.text_area("추천 강좌", height=200)
+        
+        with col2_2:
+            st.text_area("AI의견", height=200)
+
+    
 
 # 메인 함수
 def main():
