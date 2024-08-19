@@ -1,118 +1,24 @@
 import streamlit as st
+import json
+from langchain.chains import OpenAIChain  # LangChain에서 OpenAI 모듈 사용 예시
 
-# 학생 정보
-Grade = 1               # 학년
-Major = "컴퓨터공학과"   # 학과
-ID = "20001234"         # 학번
-Student_Career = "미정"              # 희망직종
+# 스트림릿 페이지 설정
+st.title("JSON 파일 처리")
 
-# 희망 직종
-Career = ["미정", "프론트엔드", "백엔드", "자바", "c언어", "인공지능"]
+# 파일 업로더 생성
+uploaded_file = st.file_uploader("JSON 파일을 업로드하세요", type=['json'])
 
-# 사이드바에 토글 버튼 생성
-toggle = st.sidebar
-
-# 세션 상태 관리를 위해 스트림릿의 세션 상태 API 사용
-if 'show' not in st.session_state:
-    st.session_state.show = False
-
-# 버튼이 눌렸을 때 상태 토글
-if toggle:
-    st.session_state.show = not st.session_state.show
-
-# 상태에 따라 정보 표시
-if st.session_state.show:
-    st.title("정보 입력")
-    st.write("")
-else:
-    st.title("AI 컨설팅")
-    st.write("")
-
-
-# 첫 번째 페이지 구성
-def page_one():
-
-    with st.container():
-        student_info, grade = st.columns(2)
-
-        with student_info:
-            st.text_input("학생 정보")
-            ID = st.text_input("학번")
-            Major = st.text_input("학과")
-            Grade = st.text_input("학년")
-            Student_Career = st.selectbox("희망직종", Career)
-
-        with grade:
-            grad_info = st.text_area("이수 정보 입력", height=375) 
-
-    with st.container():
-        empty_col1, empty_col2, empty_col3, empty_col4, empty_col5, empty_col6, empty_col7, save_toggle = st.columns(8)
-
-        with empty_col1:
-            st.write("")
-        
-        with empty_col2:
-            st.write("")
-        
-        with empty_col3:
-            st.write("")
-
-        with empty_col4:
-            st.write("")
-
-        with empty_col5:
-            st.write("")
-        
-        with empty_col6:
-            st.write("")
-
-        with empty_col7:
-            st.write("")
-
-        with save_toggle:
-            st.button("저 장")
-
-
-
-# 두 번째 페이지 구성
-def page_two():
-    with st.container():
-        Career_info, requirements = st.columns(2)
-
-        with Career_info:
-            text = "희망 직종 : " + Student_Career
-            st.write(text)
-
-        with requirements:
-            st.write("이수 조건")
-            with st.container():
-                general, major = st.columns(2)
-
-                with general:
-                    st.text("교양 : ")
-                    
-                with major:
-                    st.text("전공 : ")
-
-    st.write("---")
+# 파일이 업로드되면 내용을 처리
+if uploaded_file is not None:
+    # JSON 파일 읽기
+    data = json.load(uploaded_file)
     
-    with st.container():
-        Career_recommended, ai_result = st.columns(2)
-        with Career_recommended:
-            st.text_area("추천 강좌", height=200)
-        
-        with ai_result:
-            st.text_area("AI의견", height=200)
+    # LangChain 설정 및 사용 예시
+    lc = OpenAIChain()  # 예시로 OpenAI 모델을 사용하는 LangChain 인스턴스 생성
+    result = lc.complete_prompt("Here is a sample prompt")  # 간단한 프롬프트로 완성 시도
+    
+    # 결과 출력
+    st.write("처리된 데이터:", data)
+    st.write("LangChain 결과:", result)
 
-
-# 스트림릿 사이드바 메뉴 설정
-def main():
-    page = st.sidebar.radio("MENU", ["정보 입력", "AI 컨설팅"])
-
-    if page == "정보 입력":
-        page_one()
-    elif page == "AI 컨설팅":
-        page_two()
-
-if __name__ == "__main__":
-    main()
+# 스트림릿 실행을 위해 터미널에서 `streamlit run your_script.py` 실행
