@@ -115,11 +115,11 @@ def page_two():
                 general, major = st.columns(2)
 
                 with general:
-                    text = "교양 : " + general_credits
+                    text = "교양 : " + str(general_credits)
                     st.write(text)
                     
                 with major:
-                    text = "전공 : " + major_credits
+                    text = "전공 : " + str(major_credits)
                     st.write("전공 : ")
 
     st.write("---")
