@@ -56,11 +56,11 @@ def page_two():
 
     student_id = int(st.session_state.student_info['student_id'])
     if student_id >= 20160000:
-        required_general_credits = "/46"
-        required_major_credits = "/42"
+        required_general_credits = "/46 미만"
+        required_major_credits = "/42 이상"
     else:
-        required_general_credits = "/40"
-        required_major_credits = "/46"
+        required_general_credits = "/40 미만"
+        required_major_credits = "/46 이상"
 
     
     with st.container():
@@ -70,6 +70,7 @@ def page_two():
             st.write("희망 직종 : ", st.session_state.student_info['student_career'])
         
         with col2:
+            st.write("교양 이수 최소 학점 : 12학점 이상")
             st.write("교양 학점 : ", st.session_state.student_info['general_credits'], required_general_credits)
             st.write("전공 학점 : ", st.session_state.student_info['major_credits'], required_major_credits)
 
