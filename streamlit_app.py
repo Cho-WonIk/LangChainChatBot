@@ -41,10 +41,11 @@ def page_one():
 
         with student_info_col:
             st.text_input("학생 정보")
-            ID = st.text_input("학번")
-            Major = st.text_input("학과")
-            Grade = st.text_input("학년")
-            Student_Career = st.selectbox("희망직종", Career)
+            st.text_input("학번", value=ID)
+            st.text_input("학과", value = Major)
+            st.text_input("학년", value = Grade)
+            st.selectbox("희망직종 선택", Career, index=Career.index(Student_Career))
+            #Student_Career = st.selectbox("희망직종", Career)
 
         with grade_col:
             grad_info = st.text_area("이수 정보 입력( EX: 과목명, 구분, 학점)", height=375)  # 이수한 과목 및 학점 입력
