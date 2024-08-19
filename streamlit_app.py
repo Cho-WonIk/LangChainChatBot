@@ -74,7 +74,7 @@ def page_one():
 # 두 번째 페이지 구성
 def page_two():
     with st.container():
-        info, result = st.colums(2)
+        info, result = st.columns(2)
 
         with info:
             st.text("희망 직종")
