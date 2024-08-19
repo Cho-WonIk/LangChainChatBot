@@ -99,7 +99,7 @@ def page_one():
         with save_toggle_col:
             process = st.button("저 장")
         
-        if process : print("저장 완료")
+    if process : print("저장 완료")
 
 
 
