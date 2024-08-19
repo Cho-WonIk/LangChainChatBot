@@ -37,25 +37,19 @@ def page_one():
             grad_info = st.text_area("이수 정보 입력", height=375) 
 
     with st.container():
-        empty_col, save_toggle = st.columns(2)
+        empty_col1, empty_col2, empty_col3, save_toggle = st.columns(4)
 
-        with empty_col:
+        with empty_col1:
+            st.write("")
+        
+        with empty_col2:
+            st.write("")
+        
+        with empty_col3:
             st.write("")
 
         with save_toggle:
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                st.write("")
-
-            with col2:
-                col2_1, col2_2 = st.columns(2)
-
-                with col2_1:
-                    st.write("")
-
-                with col2_2:
-                    st.button("저 장")
+            st.button("저 장")
 
 
 
