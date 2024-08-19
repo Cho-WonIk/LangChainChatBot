@@ -3,6 +3,7 @@ import tiktoken
 from loguru import logger
 
 import json
+import logging
 
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
@@ -38,7 +39,7 @@ def main():
         st.session_state.processComplete = None
 
     with st.sidebar:
-        uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx'],accept_multiple_files=True)
+        uploaded_files =  st.file_uploader("Upload your file",type=['pdf','docx', 'json'],accept_multiple_files=True)
         openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
         process = st.button("Process")
     if process:
@@ -106,23 +107,29 @@ def tiktoken_len(text):
     return len(tokens)
 
 def get_text(docs):
-
     doc_list = []
-    
     for doc in docs:
         file_name = doc.name  # doc 객체의 이름을 파일 이름으로 사용
         with open(file_name, "wb") as file:  # 파일을 doc.name으로 저장
             file.write(doc.getvalue())
-            logger.info(f"Uploaded {file_name}")
-        if '.pdf' in doc.name:
+            logging.info(f"Uploaded {file_name}")
+
+        # 파일 확장자에 따라 적절한 로더를 선택
+        if '.pdf' in file_name:
             loader = PyPDFLoader(file_name)
             documents = loader.load_and_split()
-        elif '.docx' in doc.name:
+        elif '.docx' in file_name:
             loader = Docx2txtLoader(file_name)
             documents = loader.load_and_split()
-        elif '.pptx' in doc.name:
+        elif '.pptx' in file_name:
             loader = UnstructuredPowerPointLoader(file_name)
             documents = loader.load_and_split()
+        elif '.json' in file_name:
+            with open(file_name, 'r', encoding='utf-8') as file:
+                documents = json.load(file)  # JSON 파일을 읽고 파싱
+                # JSON 객체는 종종 딕셔너리 형태이므로, 이를 리스트로 변환하는 과정이 필요할 수 있습니다.
+                if isinstance(documents, dict):
+                    documents = [documents]  # 딕셔너리를 리스트로 변환
 
         doc_list.extend(documents)
     return doc_list
