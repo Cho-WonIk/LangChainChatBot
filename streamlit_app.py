@@ -61,10 +61,7 @@ def page_two():
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
-    page = st.selectbox(
-        "Menu",
-        ["페이지1", "페이지2"]
-    )
+    page = st.sidebar.radio("", ["첫 페이지", "두 번째 페이지"])
 
     if page == "첫 페이지":
         page_one()
