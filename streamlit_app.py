@@ -54,6 +54,15 @@ def page_one():
 def page_two():
     st.subheader("AI 컨설팅")
 
+    student_id = int(st.session_state.student_info['student_id'])
+    if student_id >= 20160000:
+        required_general_credits = "/46"
+        required_major_credits = "/42"
+    else:
+        required_general_credits = "/40"
+        required_major_credits = "/46"
+
+    
     with st.container():
         col1, col2 = st.columns(2)
 
@@ -61,8 +70,10 @@ def page_two():
             st.write("희망 직종 : ", st.session_state.student_info['student_career'])
         
         with col2:
-            st.write("교양 학점 : ", st.session_state.student_info['general_credits'])
-            st.write("전공 학점 : ", st.session_state.student_info['major_credits'])
+            st.write("교양 학점 : ", st.session_state.student_info['general_credits'], required_general_credits)
+            st.write("전공 학점 : ", st.session_state.student_info['major_credits'], required_major_credits)
+
+    st.write("---")
 
     with st.container():
         col2_1, col2_2 = st.columns(2)
