@@ -79,11 +79,11 @@ def page_two():
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
-    page = st.sidebar.radio("", ["첫 페이지", "두 번째 페이지"])
+    page = st.sidebar.radio("", ["정보 입력", "AI 컨설팅"])
 
-    if page == "첫 페이지":
+    if page == "정보 입력":
         page_one()
-    elif page == "두 번째 페이지":
+    elif page == "AI 컨설팅":
         page_two()
 
 if __name__ == "__main__":
