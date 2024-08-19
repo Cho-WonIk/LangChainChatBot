@@ -79,10 +79,10 @@ def page_two():
         col2_1, col2_2 = st.columns(2)
 
         with col2_1:
-            st.text_area("추천 강좌", height=200)
+            st.text_area("추천 강좌", "프롬프트 값 출력", height=200)
         
         with col2_2:
-            st.text_area("AI의견", height=200)
+            st.text_area("AI의견", "프롬프트 값 출력", height=200)
 
     
 
