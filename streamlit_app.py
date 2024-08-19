@@ -13,9 +13,9 @@ if toggle:
 
 # 상태에 따라 정보 표시
 if st.session_state.show:
-    st.write("학생 개인정보")
+    st.title("학생 개인정보")
 else:
-    st.write("AI 컨설팅")
+    st.title("AI 컨설팅")
 
 
 # 첫 번째 페이지 구성
