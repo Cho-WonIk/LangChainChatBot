@@ -118,11 +118,19 @@ def get_text(docs):
             documents = loader.load_and_split()
         elif '.json' in file_name:
             with open(file_name, 'r', encoding='utf-8') as file:
-                documents = json.load(file)  # JSON 파일을 읽고 파싱
-                # JSON 객체는 종종 딕셔너리 형태이므로, 이를 리스트로 변환하는 과정이 필요할 수 있습니다.
-                if isinstance(documents, dict):
-                    documents = [documents]  # 딕셔너리를 리스트로 변환
-
+                data = json.load(file)
+                if isinstance(data, dict):
+                    # JSON 구조에 따라 적절한 텍스트 추출 로직 구현
+                    # 예를 들어, 모든 'content' 키를 찾아서 텍스트로 추가
+                    for key, value in data.items():
+                        if isinstance(value, str):
+                            documents = [{'text': value}]
+                        elif isinstance(value, dict):  # 더 깊은 단계의 텍스트 처리
+                            for sub_key, sub_value in value.items():
+                                if isinstance(sub_value, str):
+                                    documents.append({'text': sub_value})
+                elif isinstance(data, list):
+                    documents = [{'text': item} for item in data if isinstance(item, str)]
         doc_list.extend(documents)
     return doc_list
 
