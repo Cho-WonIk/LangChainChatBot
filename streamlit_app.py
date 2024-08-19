@@ -86,7 +86,7 @@ def page_two():
             st.write("") # db에서 정보를 받아온 내용을 바탕으로 계산
 
         with result:
-            st.text_area("결과물", height=200)
+            st.text_area("추천 강좌", height=200)
             st.text_area("AI의견", height=200)
 
 # 스트림릿 사이드바 메뉴 설정
