@@ -77,7 +77,8 @@ def page_two():
         info, result = st.columns(2)
 
         with info:
-            st.write("희망 직종" + Career)
+            text = "희망 직종" + Career
+            st.write(text)
             st.write("이수 조건")
 
         with result:
