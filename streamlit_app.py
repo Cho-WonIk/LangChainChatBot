@@ -1,19 +1,5 @@
 import streamlit as st
 
-##openai_api_key = st.secrets["openai_api_key"]
-
-#prompt = ""
-
-def call_openai_api(text):
-    # st.secrets를 통해 API 키를 가져옵니다.
-    openai_api_key = st.secrets["openai_api_key"]
-    # OpenAI API 호출
-    response = openai.Completion.create(
-        engine="gpt-3.5-turbo",  # 사용할 모델, 필요에 따라 다른 모델로 변경 가능
-        prompt=text,
-        max_tokens=150
-    )
-    return response.choices[0].text.strip()
 
 # 학생 정보
 Grade = 1               # 학년
