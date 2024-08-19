@@ -13,13 +13,31 @@ if toggle:
 
 # 상태에 따라 정보 표시
 if st.session_state.show:
-    st.write("여기에 보여질 내용을 넣어주세요!")
+    st.write("학생 개인정보")
 else:
-    st.write("버튼을 눌러 내용을 토글하세요.")
+    st.write("AI 컨설팅")
 
 
 # 첫 번째 페이지 구성
 def page_one():
+
+    # 두 개의 컬럼 생성
+    col1, col2 = st.columns(2)
+
+    # 첫 번째 컬럼
+    with col1:
+        st.write("첫 번째 박스")
+        for i in range(10):  # 예제를 위한 반복 내용
+            st.write(f"항목 {i + 1}")
+
+    # 두 번째 컬럼
+    with col2:
+        st.write("두 번째 박스")
+        for i in range(10):  # 예제를 위한 반복 내용
+            st.write(f"정보 {i + 1}")
+
+
+"""
     with st.container():
         st.text_area("설명을 입력하세요", height=300)
         st.text_input("간단한 메모")
@@ -27,7 +45,7 @@ def page_one():
     with st.container():
         st.text_area("AI 간단평", height=100)
 
-    st.button("저장")
+    st.button("저장")"""
 
 # 두 번째 페이지 구성
 def page_two():
