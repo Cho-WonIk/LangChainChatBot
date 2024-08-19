@@ -77,13 +77,14 @@ def page_one():
 # 두 번째 페이지 구성
 def page_two():
     with st.container():
-        info, result = st.columns(2)
+        Career_info, requirements = st.columns(2)
 
-        with info:
+        with Career_info:
             text = "희망 직종 : " + Student_Career
             st.write(text)
-            st.write("이수 조건")
 
+        with requirements:
+            st.write("이수 조건")
             with st.container():
                 general, major = st.columns(2)
 
@@ -93,9 +94,14 @@ def page_two():
                 with major:
                     st.text("전공 : ")
 
-        with result:
+    with st.container():
+        Career_recommended, ai_result = st.columns(2)
+        with Career_recommended:
             st.text_area("추천 강좌", height=200)
+        
+        with ai_result:
             st.text_area("AI의견", height=200)
+            
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
