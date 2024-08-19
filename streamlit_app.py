@@ -46,14 +46,6 @@ def main():
         if not openai_api_key:
             st.info("Please add your OpenAI API key to continue.")
             st.stop()
-        with open("auth.json") as f:
-            config = json.load(f)
-
-        firebase = pyrebase.initialize_app(config)
-        db = firebase.database()
-
-        data = {"apikey" : 1234, "name" : "Dusan Baek"}
-        db.child("User").update(data)
 
         files_text = get_text(uploaded_files)
         text_chunks = get_text_chunks(files_text)
