@@ -33,13 +33,8 @@ def page_one():
             st.text_input("학년")
             st.text_input("희망직종")
 
-
-            
-
         with grade:
-            st.write("두 번째 박스")
-            for i in range(10):  # 예제를 위한 반복 내용
-                st.write(f"정보 {i + 1}")  
+            grad_info = st.text_area("이수 정보 입력", height=300) 
 
     with st.container():
         empty_col, save_toggle = st.columns(2)
