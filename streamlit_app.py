@@ -5,14 +5,17 @@ from langchain_openai import ChatOpenAI
 # 스트림릿 페이지 설정
 st.title("LangChain을 이용한 JSON 파일 내 텍스트 처리")
 
+# API 키 입력
+api_key = st.text_input("OpenAI API 키를 입력하세요:", type="password")
+
 # 파일 업로더 생성
 uploaded_file = st.file_uploader("JSON 파일을 업로드하세요", type=['json'])
 
-# ChatOpenAI 모델 초기화
-llm = ChatOpenAI(model="gpt-4o-mini")
+# API 키와 파일이 모두 제공된 경우 처리 진행
+if api_key and uploaded_file:
+    # ChatOpenAI 모델 초기화
+    llm = ChatOpenAI(api_key=api_key, model="gpt-4o-mini")
 
-# 파일이 업로드되면 내용을 처리
-if uploaded_file is not None:
     # JSON 파일 읽기
     data = json.load(uploaded_file)
     
