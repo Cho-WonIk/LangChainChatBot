@@ -13,9 +13,11 @@ if toggle:
 
 # 상태에 따라 정보 표시
 if st.session_state.show:
-    st.title("학생 개인정보")
+    st.title("정보 입력")
+    st.write("")
 else:
     st.title("AI 컨설팅")
+    st.write("")
 
 
 # 첫 번째 페이지 구성
@@ -25,9 +27,11 @@ def page_one():
         student_info, grade = st.columns(2)
 
         with student_info:
-            st.write("첫 번째 박스")
-            for i in range(10):  # 예제를 위한 반복 내용
-                st.write(f"항목 {i + 1}")
+            st.write("학생 정보")
+            st.write("학번")
+            st.write("학과")
+            st.write("학년")
+            st.write("희망직종")
 
         with grade:
             st.write("두 번째 박스")
