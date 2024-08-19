@@ -34,7 +34,7 @@ def page_one():
             st.text_input("희망직종")
 
         with grade:
-            grad_info = st.text_area("이수 정보 입력", height=370) 
+            grad_info = st.text_area("이수 정보 입력", height=375) 
 
     with st.container():
         empty_col, save_toggle = st.columns(2)
@@ -49,7 +49,7 @@ def page_one():
                 st.write("")
 
             with col2:
-                st.button("저장")
+                st.button("저      장")
 
 
 
