@@ -40,7 +40,7 @@ def page_one():
         empty_col, save_toggle = st.columns(2)
 
         with empty_col:
-            st.write("   ")
+            st.write("")
 
         with save_toggle:
             col1, col2 = st.columns(2)
@@ -49,18 +49,7 @@ def page_one():
                 st.write("")
 
             with col2:
-                col2_1, col2_2 = st.columns(2)
-
-                with col2_1:
-                    st.write("")
-                
-                with col2_2:
-                    col2_2_1, col2_2_2 = st.columns(2)
-
-                    with col2_2_1:
-                        st.write("")
-                    with col2_2_2:
-                        st.button("저장")
+                st.button("저장")
 
 
 
