@@ -116,21 +116,6 @@ def get_text(docs):
         elif '.pptx' in file_name:
             loader = UnstructuredPowerPointLoader(file_name)
             documents = loader.load_and_split()
-        elif '.json' in file_name:
-            with open(file_name, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-                if isinstance(data, dict):
-                    # JSON 구조에 따라 적절한 텍스트 추출 로직 구현
-                    # 예를 들어, 모든 'content' 키를 찾아서 텍스트로 추가
-                    for key, value in data.items():
-                        if isinstance(value, str):
-                            documents = [{'text': value}]
-                        elif isinstance(value, dict):  # 더 깊은 단계의 텍스트 처리
-                            for sub_key, sub_value in value.items():
-                                if isinstance(sub_value, str):
-                                    documents.append({'text': sub_value})
-                elif isinstance(data, list):
-                    documents = [{'text': item} for item in data if isinstance(item, str)]
         doc_list.extend(documents)
     return doc_list
 
