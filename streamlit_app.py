@@ -13,18 +13,18 @@ if 'student_info' not in st.session_state:
 
 # 페이지 1: 정보 입력
 def page_one():
+    st.subheader("학생 정보")
     with st.container():
         student_info_col, grade_col = st.columns(2)
 
         with student_info_col:
-            st.subheader("학생 정보")
             st.session_state.student_info['student_id'] = st.text_input("학번", value=st.session_state.student_info['student_id'])
             st.session_state.student_info['major'] = st.text_input("학과", value=st.session_state.student_info['major'])
             st.session_state.student_info['grade'] = st.number_input("학년", value=st.session_state.student_info['grade'], format="%d")
             st.session_state.student_info['student_career'] = st.selectbox("희망 직종 선택", ["미정", "프론트엔드", "백엔드", "임베디드", "보안", "인공지능"], index=["미정", "프론트엔드", "백엔드", "임베디드", "보안", "인공지능"].index(st.session_state.student_info['student_career']))
 
         with grade_col:
-            grad_info = st.text_area("이수 정보 입력(예: 과목명, 구분, 학점)", height=375)  # 이수한 과목 및 학점 입력
+            grad_info = st.text_area("이수 정보 입력(입력방법: 과목명, 구분, 학점)", height=375)  # 이수한 과목 및 학점 입력
 
             # 입력된 데이터를 줄별로 분리
             lines = grad_info.split('\n')
@@ -52,6 +52,7 @@ def page_one():
 
 # 페이지 2: AI 컨설팅
 def page_two():
+
     st.write("희망 직종 : ", st.session_state.student_info['student_career'])
     st.write("교양 학점 : ", st.session_state.student_info['general_credits'])
     st.write("전공 학점 : ", st.session_state.student_info['major_credits'])
