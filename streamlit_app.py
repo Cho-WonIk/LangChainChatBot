@@ -80,13 +80,14 @@ def page_two():
         info, result = st.columns(2)
 
         with info:
-            text = "희망 직종" + Career[Student_Career]
+            text = "희망 직종 : " + Career[Student_Career]
             st.write(text)
             st.write("이수 조건")
+            st.write("") # db에서 정보를 받아온 내용을 바탕으로 계산
 
         with result:
-            st.text("결과물")
-            st.text("AI의견")
+            st.text_area("결과물", height=200)
+            st.text_area("AI의견", height=200)
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
