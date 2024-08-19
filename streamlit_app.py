@@ -1,8 +1,7 @@
 import streamlit as st
 import tiktoken
 from loguru import logger
-# import firebase_admin
-import pyrebase
+
 import json
 
 from langchain.chains import ConversationalRetrievalChain
