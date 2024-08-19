@@ -12,7 +12,7 @@ if 'student_info' not in st.session_state:
     }
 
 # 사이드바에 토글 버튼 생성
-toggle = st.sidebar.button('Toggle Page')
+toggle = st.sidebar
 
 # 세션 상태를 통한 페이지 토글
 if toggle:
