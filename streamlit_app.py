@@ -94,6 +94,8 @@ def page_two():
                 with major:
                     st.text("전공 : ")
 
+    st.write("---")
+    
     with st.container():
         Career_recommended, ai_result = st.columns(2)
         with Career_recommended:
@@ -101,7 +103,7 @@ def page_two():
         
         with ai_result:
             st.text_area("AI의견", height=200)
-            
+
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
