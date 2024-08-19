@@ -49,7 +49,13 @@ def page_one():
                 st.write("")
 
             with col2:
-                st.button("저      장")
+                col2_1, col2_2 = st.columns(2)
+
+                with col2_1:
+                    st.write("")
+
+                with col2_2:
+                    st.button("저 장")
 
 
 
