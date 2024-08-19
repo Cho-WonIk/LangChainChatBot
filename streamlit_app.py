@@ -1,6 +1,7 @@
 import streamlit as st
 import json
-from langchain.chains import OpenAIChain  # LangChain에서 OpenAI 모듈 사용 예시
+#from langchain.chains import OpenAIChain  # LangChain에서 OpenAI 모듈 사용 예시
+from langchain.chat_models import OpenAIChain
 
 # 스트림릿 페이지 설정
 st.title("JSON 파일 처리")
