@@ -22,20 +22,26 @@ else:
 def page_one():
 
     with st.container():
-        col1, col2 = st.columns(2)
+        student_info, grade = st.columns(2)
 
-        with col1:
+        with student_info:
             st.write("첫 번째 박스")
             for i in range(10):  # 예제를 위한 반복 내용
                 st.write(f"항목 {i + 1}")
 
-        with col2:
+        with grade:
             st.write("두 번째 박스")
             for i in range(10):  # 예제를 위한 반복 내용
                 st.write(f"정보 {i + 1}")  
 
     with st.container():
-        st.button("저장")
+        empty_col, save_toggle = st.columns(2)
+
+        with empty_col:
+            st.write("")
+
+        with save_toggle:
+            st.button("저장")
 
 
 
