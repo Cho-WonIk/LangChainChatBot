@@ -11,19 +11,6 @@ if 'student_info' not in st.session_state:
         'major_credits': 0
     }
 
-# 사이드바에 토글 버튼 생성
-toggle = st.sidebar
-
-# 세션 상태를 통한 페이지 토글
-if toggle:
-    st.session_state.show = not st.session_state.show
-
-# 상태에 따라 정보 표시
-if st.session_state.get('show', False):
-    st.title("정보 입력")
-else:
-    st.title("AI 컨설팅")
-
 # 페이지 1: 정보 입력
 def page_one():
     with st.container():
@@ -33,7 +20,7 @@ def page_one():
             st.subheader("학생 정보")
             st.session_state.student_info['student_id'] = st.text_input("학번", value=st.session_state.student_info['student_id'])
             st.session_state.student_info['major'] = st.text_input("학과", value=st.session_state.student_info['major'])
-            st.session_state.student_info['grade'] = st.text_input("학년", value=st.session_state.student_info['grade'])
+            st.session_state.student_info['grade'] = st.number_input("학년", value=st.session_state.student_info['grade'], format="%d")
             st.session_state.student_info['student_career'] = st.selectbox("희망 직종 선택", ["미정", "프론트엔드", "백엔드", "임베디드", "보안", "인공지능"], index=["미정", "프론트엔드", "백엔드", "임베디드", "보안", "인공지능"].index(st.session_state.student_info['student_career']))
 
         with grade_col:
