@@ -27,21 +27,11 @@ def page_one():
         student_info, grade = st.columns(2)
 
         with student_info:
-            info_text, info_input = st.columns(2)
-
-            with info_text:
-                st.write("학생 정보")
-                st.write("학번")
-                st.write("학과")
-                st.write("학년")
-                st.write("희망직종")
-
-            with info_input:
-                st.text_input("학생 정보")
-                st.text_input("학번")
-                st.text_input("학과")
-                st.text_input("학년")
-                st.text_input("희망직종")
+            st.text_input("학생 정보")
+            st.text_input("학번")
+            st.text_input("학과")
+            st.text_input("학년")
+            st.text_input("희망직종")
 
 
             
