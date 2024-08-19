@@ -1,5 +1,11 @@
 import streamlit as st
 
+# 학생 정보
+Grade = 1               # 학년
+Major = "컴퓨터공학과"   # 학과
+ID = "20001234"         # 학번
+Career = 0              # 희망직종
+
 # 사이드바에 토글 버튼 생성
 toggle = st.sidebar
 
@@ -28,10 +34,10 @@ def page_one():
 
         with student_info:
             st.text_input("학생 정보")
-            st.text_input("학번")
-            st.text_input("학과")
-            st.text_input("학년")
-            st.text_input("희망직종")
+            ID = st.text_input("학번")
+            Major = st.text_input("학과")
+            Grade = st.text_input("학년")
+            Career = st.text_input("희망직종")
 
         with grade:
             grad_info = st.text_area("이수 정보 입력", height=375) 
@@ -68,14 +74,14 @@ def page_one():
 # 두 번째 페이지 구성
 def page_two():
     with st.container():
-        st.checkbox("이주 간격")
-        st.text("다음 메모")
-    
-    with st.container():
-        st.text_area("주요 내용", height=300)
+        info, result = st.colums(2)
 
-    with st.container():
-        st.text_area("AI 의견", height=100)
+        with info:
+            st.text("희망 직종")
+
+        with result:
+            st.text("결과물")
+            st.text("AI의견")
 
 # 스트림릿 사이드바 메뉴 설정
 def main():
