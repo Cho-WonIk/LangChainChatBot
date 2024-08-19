@@ -6,9 +6,12 @@ Grade = 1               # 학년
 Major = "컴퓨터공학과"   # 학과
 ID = "20001234"         # 학번
 Student_Career = "미정"              # 희망직종
+general_credits = 0     # 교양학점
+major_credits = 0       # 전공학점
+
 
 # 희망 직종
-Career = ["미정", "프론트엔드", "백엔드", "자바", "c언어", "인공지능"]
+Career = ["미정", "프론트엔드", "백엔드", "임베디드", "보안", "인공지능"]
 
 # 사이드바에 토글 버튼 생성
 toggle = st.sidebar
@@ -44,7 +47,29 @@ def page_one():
             Student_Career = st.selectbox("희망직종", Career)
 
         with grade_col:
-            grad_info = st.text_area("이수 정보 입력", height=375) 
+            grad_info = st.text_area("이수 정보 입력( EX: 과목명, 구분, 학점)", height=375)  # 이수한 과목 및 학점 입력
+
+            # 교양과 전공 학점을 저장할 변수 초기화
+            general_credits = 0
+            major_credits = 0
+
+            # 입력된 데이터를 줄별로 분리
+            lines = grad_info.split('\n')
+
+            # 각 줄을 처리
+            for line in lines:
+                if line.strip():  # 공백이 아닌 줄만 처리
+                    parts = line.split(',')  # 쉼표로 데이터 분리
+                    if len(parts) == 3:  # 정확히 세 부분으로 나뉘는지 확인
+                        ##course_name = parts[0].strip()  # 과목명
+                        category = parts[1].strip()  # 구분 (교양 혹은 전공)
+                        credits = float(parts[2].strip())  # 학점
+
+                        # 교양과 전공 학점 합산
+                        if category == "교양":
+                            general_credits += credits
+                        elif category == "전공":
+                            major_credits += credits
 
     with st.container():
         empty_col1, empty_col2, empty_col3, empty_col4, empty_col5, empty_col6, empty_col7, save_toggle_col = st.columns(8)
@@ -90,10 +115,12 @@ def page_two():
                 general, major = st.columns(2)
 
                 with general:
-                    st.text("교양 : ")
+                    text = "교양 : " + general_credits
+                    st.write(text)
                     
                 with major:
-                    st.text("전공 : ")
+                    text = "전공 : " + major_credits
+                    st.write("전공 : ")
 
     st.write("---")
 
