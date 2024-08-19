@@ -4,7 +4,10 @@ import streamlit as st
 Grade = 1               # 학년
 Major = "컴퓨터공학과"   # 학과
 ID = "20001234"         # 학번
-Career = 0              # 희망직종
+Student_Career = 0              # 희망직종
+
+# 희망 직종
+Career = ["미정", "프론트엔드", "백엔드", "자바", "c언어", "인공지능"]
 
 # 사이드바에 토글 버튼 생성
 toggle = st.sidebar
@@ -37,7 +40,7 @@ def page_one():
             ID = st.text_input("학번")
             Major = st.text_input("학과")
             Grade = st.text_input("학년")
-            Career = st.text_input("희망직종")
+            Student_Career = st.text_input("희망직종")
 
         with grade:
             grad_info = st.text_area("이수 정보 입력", height=375) 
@@ -77,7 +80,7 @@ def page_two():
         info, result = st.columns(2)
 
         with info:
-            text = "희망 직종" + Career
+            text = "희망 직종" + Career[Student_Career]
             st.write(text)
             st.write("이수 조건")
 
