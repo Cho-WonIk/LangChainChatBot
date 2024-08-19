@@ -63,7 +63,7 @@ def page_one():
                     if len(parts) == 3:  # 정확히 세 부분으로 나뉘는지 확인
                         ##course_name = parts[0].strip()  # 과목명
                         category = parts[1].strip()  # 구분 (교양 혹은 전공)
-                        credits = float(parts[2].strip())  # 학점
+                        credits = int(parts[2].strip())  # 학점
 
                         # 교양과 전공 학점 합산
                         if category == "교양":
@@ -120,7 +120,7 @@ def page_two():
                     
                 with major:
                     text = "전공 : " + str(major_credits)
-                    st.write("전공 : ")
+                    st.write(text)
 
     st.write("---")
 
